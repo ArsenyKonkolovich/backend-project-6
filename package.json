@@ -20,7 +20,7 @@
          "dotenv/config"
       ]
    },
-   "author": "Stanislav Dzisiak",
+   "author": "Arseny Konkolovich",
    "license": "ISC",
    "repository": {
       "type": "git",
