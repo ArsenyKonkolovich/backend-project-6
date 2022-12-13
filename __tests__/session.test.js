@@ -10,6 +10,7 @@ describe('test session', () => {
   let testData;
 
   beforeAll(async () => {
+    // @ts-ignore
     app = fastify({
       exposeHeadRoutes: false,
       logger: { target: 'pino-pretty' },
