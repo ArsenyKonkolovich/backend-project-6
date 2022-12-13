@@ -11,6 +11,7 @@ import fastifySecureSession from '@fastify/secure-session';
 import fastifyPassport from '@fastify/passport';
 import fastifySensible from '@fastify/sensible';
 import { plugin as fastifyReverseRoutes } from 'fastify-reverse-routes';
+// @ts-ignore
 import fastifyMethodOverride from 'fastify-method-override';
 import fastifyObjectionjs from 'fastify-objectionjs';
 import qs from 'qs';
@@ -25,6 +26,7 @@ import getHelpers from './helpers/index.js';
 import * as knexConfig from '../knexfile.js';
 import models from './models/index.js';
 import FormStrategy from './lib/passportStrategies/FormStrategy.js';
+// import { appendFile } from 'fs';
 
 const __dirname = fileURLToPath(path.dirname(import.meta.url));
 
@@ -32,6 +34,7 @@ const mode = process.env.NODE_ENV || 'development';
 // const isDevelopment = mode === 'development';
 
 const setUpViews = (app) => {
+  console.log(__dirname);
   const helpers = getHelpers(app);
   app.register(fastifyView, {
     engine: {
@@ -72,6 +75,8 @@ const setupLocalization = async () => {
 };
 
 const addHooks = (app) => {
+  // Регистрирует к инстансу сервера хук, который срабатывет перед каждым обработчиком
+  // В инстанс ответа в locals кладется объект, используемый в шаблоне application.pug
   app.addHook('preHandler', async (req, reply) => {
     reply.locals = {
       isAuthenticated: () => req.isAuthenticated(),
@@ -91,14 +96,20 @@ const registerPlugins = async (app) => {
     },
   });
 
+  // @ts-ignore
   fastifyPassport.registerUserDeserializer(
     (user) => app.objection.models.user.query().findById(user.id),
   );
+  // @ts-ignore
   fastifyPassport.registerUserSerializer((user) => Promise.resolve(user));
+  // @ts-ignore
   fastifyPassport.use(new FormStrategy('form', app));
+  // @ts-ignore
   await app.register(fastifyPassport.initialize());
+  // @ts-ignore
   await app.register(fastifyPassport.secureSession());
   await app.decorate('fp', fastifyPassport);
+  // @ts-ignore
   app.decorate('authenticate', (...args) => fastifyPassport.authenticate(
     'form',
     {
@@ -109,6 +120,9 @@ const registerPlugins = async (app) => {
   )(...args));
 
   await app.register(fastifyMethodOverride);
+  // Подключает плагин fastify Objection, задает опции knexconfig файл
+  // Выбирая режим работу через переменную mode
+  // Задает модели-связи между БД
   await app.register(fastifyObjectionjs, {
     knexConfig: knexConfig[mode],
     models,
