@@ -14,6 +14,7 @@ describe('test users CRUD', () => {
   const testData = getTestData();
 
   beforeAll(async () => {
+    // @ts-ignore
     app = fastify({
       exposeHeadRoutes: false,
       logger: { target: 'pino-pretty' },
