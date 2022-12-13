@@ -38,11 +38,17 @@ export default {
       },
       users: {
         id: 'ID',
+        firstName: 'First name',
+        lastName: 'Last name',
         email: 'Email',
         createdAt: 'Created at',
         new: {
           submit: 'Register',
           signUp: 'Register',
+        },
+        action: {
+          change: 'Change user',
+          delete: 'Delete user',
         },
       },
       welcome: {

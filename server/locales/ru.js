@@ -38,11 +38,17 @@ export default {
       },
       users: {
         id: 'ID',
+        firstName: 'Имя',
+        lastName: 'Фамилия',
         email: 'Email',
         createdAt: 'Дата создания',
         new: {
           submit: 'Сохранить',
           signUp: 'Регистрация',
+        },
+        action: {
+          change: 'Изменить',
+          delete: 'Удалить',
         },
       },
       welcome: {
