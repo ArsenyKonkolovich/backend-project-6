@@ -18,6 +18,16 @@ export default {
           error: 'Failed to register',
           success: 'User registered successfully',
         },
+        update: {
+          noAccess: 'You have no access',
+          success: 'Succsess change',
+          error: 'Something went wrong',
+        },
+        delete: {
+          noAccess: 'You have no access',
+          success: 'Succsess delete',
+          error: 'Something went wrong',
+        },
       },
       authError: 'Access denied! Please login',
     },
