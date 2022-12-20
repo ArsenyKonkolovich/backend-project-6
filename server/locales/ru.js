@@ -44,6 +44,20 @@ export default {
           error: 'Ошибка удаления',
         },
       },
+      tasks: {
+        create: {
+          success: 'Задача создана',
+          error: 'Ошибка создания',
+        },
+        update: {
+          success: 'Задача обновлена',
+          error: 'Ошибка обновления',
+        },
+        delete: {
+          success: 'Задача удалёна',
+          error: 'Ошибка удаления',
+        },
+      },
     },
     layouts: {
       application: {
@@ -52,6 +66,7 @@ export default {
         signUp: 'Регистрация',
         signOut: 'Выход',
         statuses: 'Статусы',
+        tasks: 'Задачи',
       },
     },
     statuses: {
@@ -66,6 +81,21 @@ export default {
       },
     },
     views: {
+      form: {
+        placeholders: {
+          email: 'Email',
+          password: 'Пароль',
+          name: 'Название',
+          firstName: 'Имя',
+          lastName: 'Фамилия',
+        },
+        filter: {
+          status: 'Статус',
+          executor: 'Исполнитель',
+          isCreatorUser: 'Содатель',
+          submit: 'Найти',
+        },
+      },
       session: {
         new: {
           signIn: 'Вход',
@@ -93,6 +123,39 @@ export default {
           hello: 'Привет от Хекслета!',
           description: 'Практические курсы по программированию',
           more: 'Узнать Больше',
+        },
+      },
+      tasks: {
+        title: 'Задачи',
+        createBtn: 'Создать задачу',
+        edit: {
+          title: 'Редактирование задачи',
+          submit: 'Сохранить задачу',
+        },
+        table: {
+          action: {
+            change: 'Изменить',
+            delete: 'Удалить задачу',
+          },
+          id: 'ID',
+          name: 'Название',
+          status: 'Статус',
+          author: 'Автор',
+          executor: 'Исполнитель',
+          createdAt: 'Дата создания',
+        },
+        new: {
+          title: 'Создание задачи',
+          submit: 'Создать задачу',
+        },
+        page: {
+          action: {
+            change: 'Изменить задачу',
+            delete: 'Удалить задачу',
+          },
+          creator: 'Создатель',
+          executor: 'Исполнитель',
+          createdAt: 'Дата создания',
         },
       },
     },

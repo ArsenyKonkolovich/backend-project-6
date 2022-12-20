@@ -44,6 +44,20 @@ export default {
           error: 'Failed to delete',
         },
       },
+      tasks: {
+        create: {
+          success: 'Task created successfully',
+          error: 'Failed to create',
+        },
+        update: {
+          success: 'Task updated successfully',
+          error: 'Failed to update',
+        },
+        delete: {
+          success: 'Task deleted successfully',
+          error: 'Failed to delete',
+        },
+      },
     },
     layouts: {
       application: {
@@ -52,6 +66,7 @@ export default {
         signUp: 'Register',
         signOut: 'Logout',
         statuses: 'Statuses',
+        tasks: 'Tasks',
       },
     },
     statuses: {
@@ -64,11 +79,23 @@ export default {
         delete: 'Delete',
         change: 'Change',
       },
-      new: {
-        createButton: 'Create status',
-      },
     },
     views: {
+      form: {
+        placeholders: {
+          email: 'Email',
+          password: 'Password',
+          name: 'Name',
+          firstName: 'First name',
+          lastName: 'Last name',
+        },
+        filter: {
+          status: 'Status',
+          executor: 'Executor',
+          isCreatorUser: 'Is creator user',
+          submit: 'Submit',
+        },
+      },
       session: {
         new: {
           signIn: 'Login',
@@ -96,6 +123,39 @@ export default {
           hello: 'Hello from Hexlet!',
           description: 'Online programming school',
           more: 'Learn more',
+        },
+      },
+      tasks: {
+        title: 'Tasks',
+        createBtn: 'Create task',
+        edit: {
+          title: 'Create task form',
+          submit: 'Create task',
+        },
+        table: {
+          action: {
+            change: 'Change task',
+            delete: 'Delete task',
+          },
+          id: 'ID',
+          name: 'Name',
+          status: 'Status',
+          author: 'Author',
+          executor: 'Executor, lol',
+          createdAt: 'Created at',
+        },
+        new: {
+          title: 'Tasks title',
+          submit: 'Create task',
+        },
+        page: {
+          action: {
+            change: 'Change task',
+            delete: 'Delete task',
+          },
+          creator: 'Creator',
+          executor: 'Executor, lol',
+          createdAt: 'Created at',
         },
       },
     },
