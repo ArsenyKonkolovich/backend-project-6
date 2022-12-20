@@ -30,7 +30,7 @@ export default (app) => {
       return reply;
     })
     .get('/tasks/new', { name: 'newTask', preValidation: app.authenticate }, async (req, reply) => {
-      const task = new app.objection.models.task();
+      const task = new app.objection.models.tasks();
       const [users, statuses] = await Promise.all([
         app.objection.models.user.query(),
         app.objection.models.statuses.query(),
@@ -42,7 +42,7 @@ export default (app) => {
     })
     .post('/tasks', { name: 'createTask', preValidation: app.authenticate }, async (req, reply) => {
       const { id: creatorId } = req.user;
-      const task = new app.objection.models.task();
+      const task = new app.objection.models.tasks();
       const {
         name, description, statusId, executorId,
       } = req.body.data;
@@ -55,12 +55,12 @@ export default (app) => {
       };
       task.$set({ ...taskData });
       try {
-        const validTask = await app.objection.models.task.fromJson(taskData);
-        await app.objection.models.task.transaction(async (trx) => {
+        const validTask = await app.objection.models.tasks.fromJson(taskData);
+        await app.objection.models.tasks.transaction(async (trx) => {
           const newTask = {
             ...validTask,
           };
-          const insertTask = await app.objection.models.task.query(trx).insertGraph(newTask);
+          const insertTask = await app.objection.models.tasks.query(trx).insertGraph(newTask);
           return insertTask;
         });
         req.flash('info', i18next.t('flash.tasks.create.success'));
@@ -80,14 +80,14 @@ export default (app) => {
     })
     .get('/tasks/:id', { name: 'taskPage', preValidation: app.authenticate }, async (req, reply) => {
       const taskId = Number(req.params.id);
-      const task = await app.objection.models.task.query().withGraphJoined('[creator, executor, status]').findById(taskId);
+      const task = await app.objection.models.tasks.query().withGraphJoined('[creator, executor, status]').findById(taskId);
 
       reply.render('tasks/task', { task });
       return reply;
     })
     .get('/tasks/:id/edit', { name: 'editTask', preValidation: app.authenticate }, async (req, reply) => {
       const taskId = Number(req.params.id);
-      const task = await app.objection.models.task.query().findById(taskId);
+      const task = await app.objection.models.tasks.query().findById(taskId);
       const [users, statuses] = await Promise.all([
         app.objection.models.user.query(),
         app.objection.models.statuses.query(),
@@ -102,7 +102,7 @@ export default (app) => {
       const { id: creatorId } = req.user;
       const taskId = Number(req.params.id);
 
-      const task = new app.objection.models.task();
+      const task = new app.objection.models.tasks();
 
       const {
         name, description, statusId, executorId,
@@ -116,13 +116,13 @@ export default (app) => {
       };
       task.$set({ ...taskData });
       try {
-        const validTask = await app.objection.models.task.fromJson(taskData);
-        await app.objection.models.task.transaction(async (trx) => {
+        const validTask = await app.objection.models.tasks.fromJson(taskData);
+        await app.objection.models.tasks.transaction(async (trx) => {
           const updatedTask = {
             id: taskId,
             ...validTask,
           };
-          const insertTask = await app.objection.models.task.query(trx)
+          const insertTask = await app.objection.models.tasks.query(trx)
             .upsertGraph(updatedTask, { relate: true, unrelate: true });
           return insertTask;
         });
@@ -145,7 +145,7 @@ export default (app) => {
       const { id: currentUser } = req.user;
       const taskId = Number(req.params.id);
 
-      const task = await app.objection.models.task.query().findById(taskId);
+      const task = await app.objection.models.tasks.query().findById(taskId);
 
       if (currentUser !== task.creatorId) {
         req.flash('error', i18next.t('flash.tasks.delete.noAccess'));
@@ -153,7 +153,7 @@ export default (app) => {
       }
 
       try {
-        await app.objection.models.task.transaction(async (trx) => {
+        await app.objection.models.tasks.transaction(async (trx) => {
           await task.$query(trx).delete();
         });
         req.flash('info', i18next.t('flash.tasks.delete.success'));
