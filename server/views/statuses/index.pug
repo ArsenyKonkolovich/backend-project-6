@@ -1,14 +1,14 @@
 extends ../layouts/application.pug
 
 block content
-  h1.display-4.fw-bold.mt-4= t('statuses.title')
-  a.btn.btn-primary.me-1(href=`/statuses/new`)= t('statuses.action.create')
+  h1.display-4.fw-bold.mt-4= t('views.statuses.title')
+  a.btn.btn-primary.me-1(href=`/statuses/new`)= t('views.statuses.action.create')
   table.table.table-striped.mt-5
     thead
       tr
-        th= t('statuses.id')
-        th= t('statuses.name')
-        th= t('statuses.createdAt')
+        th= t('views.statuses.id')
+        th= t('views.statuses.name')
+        th= t('views.statuses.createdAt')
     tbody
       each status in statuses
         tr
@@ -17,5 +17,5 @@ block content
           td= formatDate(status.createdAt)
           td
             .d-flex.flex-wrap
-              a.btn.btn-primary.me-1(href=`/statuses/${status.id}/edit`)= t('statuses.action.change')
-              +buttonTo(`/statuses/${status.id}`, 'delete')(class="btn btn-danger" value=t('statuses.action.delete'))
+              a.btn.btn-primary.me-1(href=`/statuses/${status.id}/edit`)= t('views.statuses.action.change')
+              +buttonTo(`/statuses/${status.id}`, 'delete')(class="btn btn-danger" value=t('views.statuses.action.delete'))

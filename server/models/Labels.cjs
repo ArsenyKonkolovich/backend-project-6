@@ -1,13 +1,11 @@
-// @ts-check
-
 const objectionUnique = require('objection-unique');
 const BaseModel = require('./BaseModel.cjs');
 
 const unique = objectionUnique({ fields: ['name'] });
 
-module.exports = class Statuses extends unique(BaseModel) {
+module.exports = class Labels extends unique(BaseModel) {
   static get tableName() {
-    return 'statuses';
+    return 'labels';
   }
 
   static get jsonSchema() {
@@ -24,11 +22,15 @@ module.exports = class Statuses extends unique(BaseModel) {
   static get relationMappings() {
     return {
       tasks: {
-        relation: BaseModel.HasManyRelation,
+        relation: BaseModel.ManyToManyRelation,
         modelClass: 'Tasks.cjs',
         join: {
-          from: 'statuses.id',
-          to: 'tasks.statusId',
+          from: 'labels.id',
+          through: {
+            from: 'tasks_labels.labelId',
+            to: 'tasks_labels.taskId',
+          },
+          to: 'tasks.id',
         },
       },
     };

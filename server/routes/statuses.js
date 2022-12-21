@@ -4,9 +4,8 @@ import i18next from 'i18next';
 
 export default (app) => {
   app
-    .get('/statuses', { name: 'statuses' }, async (req, reply) => {
+    .get('/statuses', { name: 'statuses', preValidation: app.authenticate }, async (req, reply) => {
       const statuses = await app.objection.models.statuses.query();
-      //   const statuses = [{ id: 1, name: 'pampam', createdAt: 'vchera' }];
       reply.render('statuses/index', { statuses });
       console.log({ statuses });
       return reply;
@@ -42,6 +41,13 @@ export default (app) => {
     .delete('/statuses/:id', { name: 'deleteStatus', preValidation: app.authenticate }, async (req, reply) => {
       console.log(1);
       const statusId = Number(req.params.id);
+      const status = await app.objection.models.status.query().findById(statusId);
+      const statusTasks = await status.$relatedQuery('tasks');
+
+      if (statusTasks.length) {
+        req.flash('error', i18next.t('flash.statuses.delete.noAccess'));
+        return reply.redirect(app.reverse('statuses'));
+      }
 
       try {
         await app.objection.models.statuses.query().deleteById(statusId);
