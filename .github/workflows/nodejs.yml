@@ -20,8 +20,8 @@ jobs:
         with:
           node-version: '18.x'
           cache: 'npm'
-      - run: make build
       - run: make setup
+      - run: make build
       - run: make lint
       - run: make test
       
