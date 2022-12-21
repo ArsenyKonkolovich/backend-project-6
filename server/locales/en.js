@@ -83,20 +83,21 @@ export default {
         signOut: 'Logout',
         statuses: 'Statuses',
         tasks: 'Tasks',
-      },
-    },
-    statuses: {
-      title: 'Statuses',
-      id: 'ID',
-      name: 'Name',
-      createdAt: 'Created at',
-      action: {
-        create: 'Create status',
-        delete: 'Delete',
-        change: 'Change',
+        labels: 'Labels',
       },
     },
     views: {
+      statuses: {
+        title: 'Statuses',
+        id: 'ID',
+        name: 'Name',
+        createdAt: 'Created at',
+        action: {
+          create: 'Create status',
+          delete: 'Delete',
+          change: 'Change',
+        },
+      },
       labels: {
         title: 'Labels',
         createBtn: 'Create label',
