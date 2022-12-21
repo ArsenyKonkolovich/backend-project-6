@@ -4,6 +4,21 @@ export default {
   translation: {
     appName: 'Fastify Шаблон',
     flash: {
+      labels: {
+        create: {
+          success: 'Метка создана',
+          error: 'Ошибка создения',
+        },
+        update: {
+          success: 'Метка обновлена',
+          error: 'Ошибка обновления',
+        },
+        delete: {
+          success: 'Метка удалена',
+          error: 'Ошибка удаления',
+          noAccess: 'Не удалось удалить',
+        },
+      },
       session: {
         create: {
           success: 'Вы залогинены',
@@ -42,6 +57,7 @@ export default {
         delete: {
           success: 'Статус удалён',
           error: 'Ошибка удаления',
+          noAccess: 'Нет доступа',
         },
       },
       tasks: {
@@ -67,20 +83,42 @@ export default {
         signOut: 'Выход',
         statuses: 'Статусы',
         tasks: 'Задачи',
-      },
-    },
-    statuses: {
-      title: 'Статусы',
-      id: 'ID',
-      name: 'Наименование',
-      createdAt: 'Дата создания',
-      action: {
-        create: 'Создать статус',
-        delete: 'Удалить',
-        change: 'Редактировать',
+        labels: 'Метки',
       },
     },
     views: {
+      statuses: {
+        title: 'Статусы',
+        id: 'ID',
+        name: 'Наименование',
+        createdAt: 'Дата создания',
+        action: {
+          create: 'Создать статус',
+          delete: 'Удалить',
+          change: 'Редактировать статус',
+        },
+      },
+      labels: {
+        title: 'Метки',
+        createBtn: 'Создать метку',
+        table: {
+          id: 'ID',
+          name: 'Название',
+          createdAt: 'Время создания',
+          action: {
+            change: 'Редактировать',
+            delete: 'Удалить',
+          },
+        },
+        new: {
+          title: 'Создание метки',
+          submit: 'Создать',
+        },
+        edit: {
+          title: 'Редактировение',
+          submit: 'Изменить',
+        },
+      },
       form: {
         placeholders: {
           email: 'Email',
@@ -91,12 +129,14 @@ export default {
           description: 'Описание',
           statusId: 'Статус',
           executorId: 'Исполнитель',
+          labels: 'Метки',
         },
         filter: {
           status: 'Статус',
           executor: 'Исполнитель',
           isCreatorUser: 'Только мои задачи',
           submit: 'Найти',
+          label: 'Метка',
         },
       },
       session: {

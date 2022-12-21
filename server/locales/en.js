@@ -4,6 +4,21 @@ export default {
   translation: {
     appName: 'Fastify Boilerplate',
     flash: {
+      labels: {
+        create: {
+          success: 'Label created',
+          error: 'Create error',
+        },
+        update: {
+          success: 'Label updated',
+          error: 'Update error',
+        },
+        delete: {
+          success: 'Label deleted',
+          error: 'Delete error',
+          noAccess: 'You have no access',
+        },
+      },
       session: {
         create: {
           success: 'You are logged in',
@@ -42,6 +57,7 @@ export default {
         delete: {
           success: 'Status deleted successfully',
           error: 'Failed to delete',
+          noAccess: 'You have no access',
         },
       },
       tasks: {
@@ -81,6 +97,27 @@ export default {
       },
     },
     views: {
+      labels: {
+        title: 'Labels',
+        createBtn: 'Create label',
+        table: {
+          id: 'ID',
+          name: 'Name',
+          createdAt: 'Created at',
+          action: {
+            change: 'Change',
+            delete: 'Delete',
+          },
+        },
+        new: {
+          title: 'Create label',
+          submit: 'Create',
+        },
+        edit: {
+          title: 'Edit label',
+          submit: 'Change',
+        },
+      },
       form: {
         placeholders: {
           email: 'Email',
@@ -91,12 +128,14 @@ export default {
           description: 'Description',
           statusId: 'Status',
           executorId: 'Executor',
+          labels: 'Labels',
         },
         filter: {
           status: 'Status',
           executor: 'Executor',
           isCreatorUser: 'Only my tasks',
           submit: 'Submit',
+          label: 'Label',
         },
       },
       session: {
