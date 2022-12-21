@@ -91,6 +91,7 @@ const setErrorHandler = (app) => {
     captureUncaught: true,
     captureUnhandledRejections: true,
   });
+  rollbar.log('test');
 
   app.setErrorHandler((error) => {
     rollbar.error(error);
