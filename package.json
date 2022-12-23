@@ -2,6 +2,7 @@
    "name": "@hexlet/code",
    "version": "0.1.0",
    "type": "module",
+   "main": "server/plugin.js",
    "description": "[![Actions Status](https://github.com/ArsenyKonkolovich/backend-project-6/workflows/hexlet-check/badge.svg)](https://github.com/ArsenyKonkolovich/backend-project-6/actions)",
    "engines": {
       "node": ">=16.x"
@@ -45,6 +46,7 @@
       "fastify-objectionjs": "^1.0.0",
       "fastify-reverse-routes": "^3.0.0",
       "heroku": "^7.67.1",
+      "hexlet": "^1.0.4",
       "i18next": "^21.9.1",
       "jquery": "^3.6.0",
       "knex": "^2.2.0",
