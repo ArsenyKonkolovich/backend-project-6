@@ -103,7 +103,7 @@ export default {
         createBtn: 'Создать метку',
         table: {
           id: 'ID',
-          name: 'Название',
+          name: 'Наименование',
           createdAt: 'Время создания',
           action: {
             change: 'Редактировать',
@@ -123,7 +123,7 @@ export default {
         placeholders: {
           email: 'Email',
           password: 'Пароль',
-          name: 'Название',
+          name: 'Наименование',
           firstName: 'Имя',
           lastName: 'Фамилия',
           description: 'Описание',
@@ -182,7 +182,7 @@ export default {
             delete: 'Удалить задачу',
           },
           id: 'ID',
-          name: 'Название',
+          name: 'Наименование',
           status: 'Статус',
           author: 'Автор',
           executor: 'Исполнитель',
