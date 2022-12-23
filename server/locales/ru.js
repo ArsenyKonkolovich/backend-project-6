@@ -115,7 +115,7 @@ export default {
           submit: 'Создать',
         },
         edit: {
-          title: 'Редактировение',
+          title: 'Изменение метки',
           submit: 'Изменить',
         },
       },
@@ -173,8 +173,8 @@ export default {
         title: 'Задачи',
         createBtn: 'Создать задачу',
         edit: {
-          title: 'Редактирование задачи',
-          submit: 'Сохранить задачу',
+          title: 'Изменение задачи',
+          submit: 'Изменить',
         },
         table: {
           action: {
@@ -190,7 +190,7 @@ export default {
         },
         new: {
           title: 'Создание задачи',
-          submit: 'Создать задачу',
+          submit: 'Создать',
         },
         page: {
           action: {
