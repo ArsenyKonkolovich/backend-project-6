@@ -35,7 +35,7 @@ export default {
         },
         update: {
           noAccess: 'Нет доступа',
-          success: 'Вы изменили пользователя!',
+          success: 'Пользователь успешно изменён',
           error: 'Ошибка изменения',
         },
         delete: {
