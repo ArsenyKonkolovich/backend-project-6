@@ -100,7 +100,6 @@ describe('Test statuses CRUD', () => {
   //     console.log(4);
   //     expect(deletedStatus).toBeUndefined();
   //   });
-
   afterEach(async () => {
     await knex('users').truncate();
     await knex('statuses').truncate();
