@@ -149,6 +149,7 @@ export default {
         id: 'ID',
         firstName: 'First name',
         lastName: 'Last name',
+        fullName: 'Full name',
         email: 'Email',
         createdAt: 'Created at',
         new: {

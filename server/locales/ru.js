@@ -149,6 +149,7 @@ export default {
         id: 'ID',
         firstName: 'Имя',
         lastName: 'Фамилия',
+        fullName: 'Полное имя',
         email: 'Email',
         createdAt: 'Дата создания',
         new: {
