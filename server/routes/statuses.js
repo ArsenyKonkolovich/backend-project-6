@@ -7,7 +7,6 @@ export default (app) => {
     .get('/statuses', { name: 'statuses', preValidation: app.authenticate }, async (req, reply) => {
       const statuses = await app.objection.models.statuses.query();
       reply.render('statuses/index', { statuses });
-      console.log({ statuses });
       return reply;
     })
     .get('/statuses/new', { name: 'newStatus' }, (req, reply) => {
@@ -19,7 +18,6 @@ export default (app) => {
 
       const status = await app.objection.models.statuses.query().findById(statusId);
       reply.render('statuses/edit', { status });
-      console.log(status);
       return reply;
     })
     .patch('/statuses/:id', { name: 'updateStatus', preValidation: app.authenticate }, async (req, reply) => {
@@ -39,7 +37,6 @@ export default (app) => {
       return reply;
     })
     .delete('/statuses/:id', { name: 'deleteStatus', preValidation: app.authenticate }, async (req, reply) => {
-      console.log(1);
       const statusId = Number(req.params.id);
       const status = await app.objection.models.status.query().findById(statusId);
       const statusTasks = await status.$relatedQuery('tasks');
@@ -60,12 +57,11 @@ export default (app) => {
 
       return reply;
     })
-    .post('/statuses', async (req, reply) => {
+    .post('/statuses', { name: 'createStatus', preValidation: app.authenticate }, async (req, reply) => {
       const status = new app.objection.models.statuses();
       status.$set(req.body.data);
 
       try {
-        console.log(req.body.data);
         const validStatus = await app.objection.models.statuses.fromJson(req.body.data);
         await app.objection.models.statuses.query().insert(validStatus);
         req.flash('info', i18next.t('flash.statuses.create.success'));

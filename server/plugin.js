@@ -35,7 +35,6 @@ const mode = process.env.NODE_ENV || 'development';
 // const isDevelopment = mode === 'development';
 
 const setUpViews = (app) => {
-  console.log(__dirname);
   const helpers = getHelpers(app);
   app.register(fastifyView, {
     engine: {
