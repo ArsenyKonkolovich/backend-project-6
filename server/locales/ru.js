@@ -100,6 +100,9 @@ export default {
         form: {
           create: 'Создать',
         },
+        edit: {
+          title: 'Изменение статуса',
+        },
       },
       labels: {
         title: 'Метки',
