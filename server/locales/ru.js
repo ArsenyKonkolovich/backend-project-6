@@ -185,7 +185,7 @@ export default {
         table: {
           action: {
             change: 'Изменить',
-            delete: 'Удалить задачу',
+            delete: 'Удалить',
           },
           id: 'ID',
           name: 'Наименование',
