@@ -84,22 +84,23 @@ describe('Test statuses CRUD', () => {
     expect(refetchedStatus.name).toEqual(modifiedStatus);
   });
 
-  //   it('deleteStatus', async () => {
-  //     const params = mockData.statuses.existing.delete;
-  //     const status = await models.statuses.query().findOne({ name: params.name });
-  //     console.log(status, params);
-  //     const response = await app.inject({
-  //       method: 'DELETE',
-  //       url: app.reverse('deleteStatus', { id: status.id }),
-  //       cookies: cookie,
-  //     });
-  //     console.log(2);
-  //     expect(response.statusCode).toBe(302);
-  //     console.log(3);
-  //     const deletedStatus = await models.statuses.query().findById(status.id);
-  //     console.log(4);
-  //     expect(deletedStatus).toBeUndefined();
-  //   });
+  it('deleteStatus', async () => {
+    const params = mockData.statuses.existing.delete;
+    const status = await models.statuses.query().findOne({ name: params.name });
+    console.log(status, params);
+    const response = await app.inject({
+      method: 'DELETE',
+      url: app.reverse('deleteStatus', { id: status.id }),
+      cookies: cookie,
+    });
+    console.log(2);
+    expect(response.statusCode).toBe(302);
+    console.log(3);
+    const deletedStatus = await models.statuses.query().findById(status.id);
+    console.log(4);
+    expect(deletedStatus).toBeUndefined();
+  });
+
   afterEach(async () => {
     await knex('users').truncate();
     await knex('statuses').truncate();
