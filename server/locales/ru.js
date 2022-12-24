@@ -93,9 +93,9 @@ export default {
         name: 'Наименование',
         createdAt: 'Дата создания',
         action: {
-          create: 'Создать статус',
+          create: 'Создать',
           delete: 'Удалить',
-          change: 'Редактировать статус',
+          change: 'Редактировать',
         },
       },
       labels: {
