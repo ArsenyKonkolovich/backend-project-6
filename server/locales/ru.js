@@ -93,9 +93,12 @@ export default {
         name: 'Наименование',
         createdAt: 'Дата создания',
         action: {
-          create: 'Создать',
+          create: 'Создать статус',
           delete: 'Удалить',
           change: 'Редактировать',
+        },
+        form: {
+          create: 'Создать',
         },
       },
       labels: {
@@ -135,7 +138,7 @@ export default {
           status: 'Статус',
           executor: 'Исполнитель',
           isCreatorUser: 'Только мои задачи',
-          submit: 'Найти',
+          submit: 'Показать',
           label: 'Метка',
         },
       },

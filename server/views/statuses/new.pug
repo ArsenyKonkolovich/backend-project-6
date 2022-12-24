@@ -4,4 +4,4 @@ block content
   h1.display-4.fw-bold.mt-4= t('views.statuses.action.create')
   +formFor()(action=route('statuses') method='post')
     +input(createStatusForm, 'name', errors)(type="text")
-    +submit(createStatusForm)(value=t('views.statuses.action.create'))
+    +submit(createStatusForm)(value=t('views.statuses.form.create'))
