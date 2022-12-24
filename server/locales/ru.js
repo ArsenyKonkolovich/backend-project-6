@@ -95,7 +95,7 @@ export default {
         action: {
           create: 'Создать статус',
           delete: 'Удалить',
-          change: 'Редактировать',
+          change: 'Изменить',
         },
         form: {
           create: 'Создать',
@@ -109,7 +109,7 @@ export default {
           name: 'Наименование',
           createdAt: 'Время создания',
           action: {
-            change: 'Редактировать',
+            change: 'Изменить',
             delete: 'Удалить',
           },
         },
