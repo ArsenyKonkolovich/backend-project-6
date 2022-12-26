@@ -9,6 +9,8 @@ export default (app) => {
         executor, status, label, isCreatorUser,
       } = req.query;
 
+      const { query } = req;
+
       const tasksQuery = app.objection.models.tasks.query().withGraphJoined('[creator, executor, status, labels]');
 
       tasksQuery.skipUndefined().modify('filterExecutor', executor || undefined);
@@ -27,7 +29,7 @@ export default (app) => {
       ]);
 
       reply.render('tasks/index', {
-        tasks, statuses, users, labels,
+        tasks, statuses, users, labels, query,
       });
       return reply;
     })
@@ -94,14 +96,16 @@ export default (app) => {
     .get('/tasks/:id/edit', { name: 'editTask', preValidation: app.authenticate }, async (req, reply) => {
       const taskId = Number(req.params.id);
       const task = await app.objection.models.tasks.query().findById(taskId);
+      const selectedLabel = await app.objection.models.tasks.query().withGraphJoined('[labels]').findById(taskId);
       const [users, statuses, labels] = await Promise.all([
         app.objection.models.user.query(),
         app.objection.models.statuses.query(),
         app.objection.models.labels.query(),
       ]);
+      console.log(selectedLabel.labels);
 
       reply.render('tasks/edit', {
-        task, statuses, users, labels,
+        task, statuses, users, labels, selectedLabel,
       });
       return reply;
     })
