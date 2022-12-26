@@ -75,7 +75,7 @@ mixin select(entity, propertyName, errors = {}, items, isMultiple = false)
     if !_.isEmpty(propertyErrors)
       .invalid-feedback= propertyErrors.map(({ message }) => message).join('. ')
 
-mixin selectedLabel(entity, propertyName, errors = {}, items, isMultiple = false, )
+mixin selectedLabel(entity, propertyName, errors = {}, items, isMultiple = false, selectedLabel)
   - propertyErrors = _.get(errors, propertyName)
   - classLine = 'form-control' + (_.isEmpty(propertyErrors) ? '' : ' is-invalid')
   - inputId = getInputId(propertyName)
@@ -97,7 +97,7 @@ mixin selectedLabel(entity, propertyName, errors = {}, items, isMultiple = false
         if propertyName === 'executorId'
           option(value= item.id selected= isSelected)= `${item.firstName} ${item.lastName}`
         else
-          option(value= item.id selected= isSelected)= item.name
+          option(value= item.id selected= selectedLabel.labels[0].id == item.id)= item.name
     if !_.isEmpty(propertyErrors)
       .invalid-feedback= propertyErrors.map(({ message }) => message).join('. ')
 

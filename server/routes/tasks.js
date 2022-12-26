@@ -102,7 +102,7 @@ export default (app) => {
         app.objection.models.statuses.query(),
         app.objection.models.labels.query(),
       ]);
-      console.log(selectedLabel.labels);
+      console.log(selectedLabel.labels[0].id);
 
       reply.render('tasks/edit', {
         task, statuses, users, labels, selectedLabel,
