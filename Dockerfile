@@ -1,4 +1,4 @@
-FROM node:18-slim
+FROM node:18-slim@sha256:e2fbe082615911b184e192b05c55e7e38460a2c24c88d92e8c122ea0175fbe56
 
 RUN apt-get update && apt-get install -yq \
   build-essential \
